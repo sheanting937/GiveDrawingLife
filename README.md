@@ -14,7 +14,7 @@ Use Conda's Miniconda to activate a Python virtual environment prior to installi
 ````
 ## Second Step
 
-Open "./Astart.html" to enjoy the process of giving your drawing life!
+Open "./Astart.html" with Microsoft Edge to enjoy the process of giving your drawing life!
 
 ## The following is the original "README.md" of project "Animated Drawings" 
 ( https://github.com/facebookresearch/AnimatedDrawings)
