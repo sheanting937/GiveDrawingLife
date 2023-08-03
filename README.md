@@ -16,7 +16,8 @@ Use Conda's Miniconda to activate a Python virtual environment prior to installi
 
 Open "./Astart.html" to enjoy the process of giving your drawing life!
 
-# The following is the original "README.md" of project "Animated Drawings" ( https://github.com/facebookresearch/AnimatedDrawings)
+## The following is the original "README.md" of project "Animated Drawings" 
+( https://github.com/facebookresearch/AnimatedDrawings)
 
 # Animated Drawings
 
