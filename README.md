@@ -1,3 +1,21 @@
+# Give Drawing Life
+## First Step
+Use Conda's Miniconda to activate a Python virtual environment prior to installing Give Drawing Life. Follow [these steps](https://conda.io/projects/conda/en/stable/user-guide/install/index.html) to download and install it. Then run the following commands:
+
+````bash
+    # create and activate the virtual environment
+    conda create --name animated_drawings python=3.8.13
+    conda activate animated_drawings
+
+    # clone GiveDrawingLife and use pip to install
+    git clone https://github.com/sheanting937/GiveDrawingLife.git
+    cd GiveDrawingLife
+    pip install -e .
+````
+## Second Step
+
+Open "./Astart.html" to enjoy the process of giving your drawing life!
+
 # Animated Drawings
 
 ![Sequence 02](https://user-images.githubusercontent.com/6675724/219223438-2c93f9cb-d4b5-45e9-a433-149ed76affa6.gif)
