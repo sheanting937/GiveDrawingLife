@@ -1,0 +1,101 @@
+<!-- learn from https://blog.csdn.net/weixin_38468077/article/details/120508802 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            /* from Aslan Zamanloo https://www.toptal.com/designers/subtlepatterns/sakura/ */
+            background-image: url("./image/sakura.png");
+        } 
+        a{
+            text-decoration: none;
+        }
+        button{
+            width: 200px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(182, 223, 239);
+            font-weight:bold;
+            font-size: 20px;
+            color: grey;
+        }
+        p {
+            color: grey;
+        }
+        .picture{
+            float: right;
+            width: 20%;
+        }
+        .text{
+            float: left;
+            width: 80%;
+        }
+    </style>
+    <title>Give Drawing Life</title>
+    </head>
+     
+     
+    <body>
+        <center><h1>Give Drawing Life</h1></center>
+        <div class="text">
+        <p><big>Procedure:</br></big>
+        1. Please open this page in Internet Explorer mode.</br>
+        2. If you meet the warning "Internet Explorer has restricted this page from running scripts or ActiveX controls", please click button "Allow blocked content".</br>
+        3. First click any Animation button you want.</br>
+           If you meet the warning "ActiveX controls on this page may not be safe to interact with other parts of this page. Do you want to allow this interaction?", 
+           please click button "Yes".</br>
+        4. Now you will see a window appear, just like the right picture.</br>
+        5. Please wait for the window to disappear (this may take about 2 minutes). Then click button "See the animation!".</br></br>
+        <big>Notice: </br></big>
+        If you want to use the same drawing to generate the second or third animation, </br>
+        please move "texture.png" from "GiveDrawingLife/examples/characters/char_girl/" to the local "Download" folder of your computer before you click the Animation buttons.
+        </p>
+        <a href="#" onclick="dance(); return false;">
+            <button id="dance" style="margin-right:50px;">Animation Dance</button>
+        </a>
+        <a href="#" onclick="walk(); return false;">
+            <button id="walk" style="margin-right:50px;">Animation Walk</button>
+        </a>
+        <a href="#" onclick="jump(); return false;">
+            <button id="jump" style="margin-right:50px;">Animation Jump</button>
+        </a>
+        <a href=Avideo_girl.html>
+            <button id="animation">See the animation!</button>
+        </a></br>
+        <img src="./image/Adance_girl1.png" style="margin-right:10px;">
+        <img src="./image/Awalk_girl2.png" style="margin-right:10px;">
+        <img src="./image/Ajump_girl1.png">
+        </div>
+        <div class="picture">
+            <img src="./image/viewer_not1.png">
+        </div>
+    </body>
+     
+    <script type="text/javascript">
+    function dance(){	
+    var cmd=new ActiveXObject("WScript.Shell");
+    // *** cmd 'conda create --name animated_drawings python=3.8.13'
+    cmd.run("cmd.exe /c cd .. && cd Downloads && move texture.png ../GiveDrawingLife/examples/characters/char_girl && cd .. && conda activate animated_drawings && cd GiveDrawingLife && python render.py Adance_girl.yaml",0);//百度搜索cmd多命令行一起写
+    // cmd.run("cmd.exe /k cd my_flask_app && python test.py > result.txt");//百度搜索cmd多命令行一起写
+    cmd=null;
+     window.setTimeout('window.close();',3000);
+    }
+    function walk(){	
+    var cmd=new ActiveXObject("WScript.Shell");
+    // *** cmd 'conda create --name animated_drawings python=3.8.13'
+    cmd.run("cmd.exe /c cd .. && cd Downloads && move texture.png ../GiveDrawingLife/examples/characters/char_girl && cd .. && conda activate animated_drawings && cd GiveDrawingLife && python render.py Awalk_girl.yaml",0);//百度搜索cmd多命令行一起写
+    // cmd.run("cmd.exe /k cd my_flask_app && python test.py > result.txt");//百度搜索cmd多命令行一起写
+    cmd=null;
+     window.setTimeout('window.close();',3000);
+    }
+    function jump(){	
+    var cmd=new ActiveXObject("WScript.Shell");
+    // *** cmd 'conda create --name animated_drawings python=3.8.13'
+    cmd.run("cmd.exe /c cd .. && cd Downloads && move texture.png ../GiveDrawingLife/examples/characters/char_girl && cd .. && conda activate animated_drawings && cd GiveDrawingLife && python render.py Ajump_girl.yaml",0);//百度搜索cmd多命令行一起写
+    // cmd.run("cmd.exe /k cd my_flask_app && python test.py > result.txt");//百度搜索cmd多命令行一起写
+    cmd=null;
+     window.setTimeout('window.close();',3000);
+    }
+    </script>
+    </html>

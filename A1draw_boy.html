@@ -1,0 +1,256 @@
+<!-- learn from https://blog.csdn.net/cuikai_8/article/details/103909699 -->
+
+<!DOCTYPE html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            /* from Aslan Zamanloo https://www.toptal.com/designers/subtlepatterns/sakura/ */
+            background-image: url("./image/sakura.png");
+            /* text-align: center;  */
+        } 
+        button{
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(182, 223, 239);
+            font-weight:bold;
+            font-size: 18px;
+            color: grey;
+        }
+        canvas{
+			display: block;
+			margin: 0 auto;
+			border:10px solid rgb(182, 223, 239);
+            border-radius: 10px;
+		}
+        .picture{
+            float: left;
+            width: 15%;
+        }
+        .text{
+            float: right;
+            width: 85%;
+        }
+        p {
+            color: grey;
+        }
+        a{
+            text-decoration: none;
+        }
+        input[type="number"] {
+        width: 40px;
+        }
+    </style>
+    <title>Give Drawing Life</title>
+    </head> 
+
+    <body>
+        <center>
+            <h1>Give Drawing Life</h1>
+        </center>
+    <div class="explain">
+        <div class="picture">
+            <img src="./image/example_boy1.png">
+        </div>
+        <div class="text">
+        <p><big>Notice:</br></big>
+        1. Please do not exceed the gray border, and try to be consistent with the model silhouette's pose, </br>
+           just like the left picture.</br>
+        2. After you finish drawing, click button "Download".</br>
+           Your drawing will be automatically saved in the local "Download" folder of your computer, named "texture.png".</br>
+        3. If you are not satisfied with the drawing "texture.png" you just saved, </br>
+           please delete it in the local "Download" folder of your computer. </br>
+           Which means, before you click button "Animate!" to jump to the next page, </br>
+           you must ensure that the "texture.png" in the local "Download" folder of your computer is the drawing you want to animate!</br>
+        4. Then click button "Animate!".</br>
+        </p>
+        <button id="download" onclick="downloadImg();" style="margin-right:10px;">Download</button>
+        <a href=Aanimation_boy.html>
+            <button id="animate">Animate!</button>
+        </a>
+        </div>
+        </div></br>
+    </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+        <canvas id="canvas1" width="957" height="1637"></canvas>
+        <canvas id="canvas2" width="957" height="1637"></canvas>
+        <div class="tooltip-pen">
+        <b>
+        <i class="ico ico-pen" title="pen" onclick="changeTools('pen');"></i>
+        <input type="color" id="color-select">
+        <input type="number" id="thickness" value="5">
+        <i class="ico ico-eraser" title="eraser" onclick="changeTools('eraser');"></i>
+        <!-- learn from https://juejin.cn/post/6844903788998836231 -->
+        <!-- <i class="ico ico-undo" title="undo"></i>
+        <i class="ico ico-redo" title="redo"></i>
+        <i class="ico ico-clear" title="clear"></i> -->
+        </b>
+        </div>
+
+        <style>
+            /* background-image: url("./image/boy.png") */
+            #canvas1{position: absolute;background-image: url("./image/boy.png");z-index: 997;}
+            #canvas2{position: absolute;background-image: url("./image/boy.png");z-index: 998;}
+            .tooltip-pen{position: fixed;width: 50px;height: 150px;top: 4%;left: 980px;z-index: 999;background-color: rgb(182, 223, 239);border-radius: 10px;}
+            .ico{display: inline-block;width: 40px;height: 40px;}
+            .ico-pen {background-image: url("./image/pen.png");background-size: 100% 100%;background-repeat: no-repeat;background-position: top center;}
+            .ico-eraser {background-image: url("./image/eraser.png");background-size: 100% 100%;background-repeat: no-repeat;background-position: top center;}
+            /* .ico-undo {background-image: url("./image/undo.png");background-size: 100% 100%;background-repeat: no-repeat;background-position: top center;}
+            .ico-redo {background-image: url("./image/redo.png");background-size: 100% 100%;background-repeat: no-repeat;background-position: top center;}
+            .ico-clear {background-image: url("./image/clear.png");background-size: 100% 100%;background-repeat: no-repeat;background-position: top center;} */
+        </style>
+    </body>
+    <script>
+        $(function () {
+           var canvas1 = document.getElementById("canvas1");
+           var ctx1 = canvas1.getContext("2d");
+            var canvas2 = document.getElementById("canvas2");
+            var ctx2 = canvas2.getContext("2d");
+           var image = new Image();
+           image.src = "./image/boy.png";
+           
+           image.onload = function(){
+              canvas1.width = image.width;
+              canvas1.height = image.height;
+              ctx1.drawImage(this, 0, 0);
+              
+              canvas2.width = image.width;
+              canvas2.height = image.height;
+              ctx2.drawImage(image, 0, 0);
+           }
+        
+        });
+        </script>
+<script>
+    var canvas1 = document.getElementById("canvas1");
+    var canvas2 = document.getElementById("canvas2");
+    var ctx2 = canvas2.getContext("2d");
+    var ctx1 = canvas1.getContext("2d");
+    // --------- 画笔和橡皮擦功能实现 -------------
+    var flag = false;  // 记录鼠标按下和抬起事件，标记工具是否开始工作
+    var isEraser; // 判断工具是画笔还是橡皮擦
+    // var lineWidth = 3; // 设置工具粗细
+    var colorSelect = document.querySelector('#color-select');  // 颜色选择器
+    var thickness = document.querySelector('#thickness');  // 笔画粗细的输入表单
+    // var undo = document.getElementById("undo");
+    // var redo = document.getElementById("redo");
+    // var reSetCanvas = document.getElementById("clear");
+    // 设置画笔颜色
+    // var theColor = "#000000";
+    // theColor.onchange = function(){
+    //     ctx2.strokeStyle = this.value;
+    // }
+    // 切换工具
+    function changeTools(tname) {
+        if (tname == 'eraser') {
+            isEraser = true;
+            lineWidth = 30;
+            $(canvas2).css({ 'cursor': "url('./image/eraser.png'),default" }); // 设置橡皮擦自定义鼠标样式
+        } else if (tname == 'pen') {
+            isEraser = false;
+            lineWidth = 3;
+            $(canvas2).css({ 'cursor': 'crosshair' }); // 设置画笔系统鼠标样式(十字)
+        }
+    }
+    // onmousedown事件
+    canvas2.onmousedown=function(eva){
+        var eva = eva||window.event;
+        ctx2.lineCap = "round";
+        ctx2.lineJoin = "round";
+        var x = eva.offsetX;
+        var y = eva.offsetY;
+        ctx2.beginPath();
+        ctx2.moveTo(x,y);
+        flag = true;
+        ctx2.lineWidth = Number(thickness.value);
+        ctx2.strokeStyle = colorSelect.value;
+    }
+    // onmousemove事件
+    canvas2.onmousemove=function(eva){
+        if(flag){
+            if(isEraser){
+                var w = lineWidth;
+                // noinspection JSAnnotator
+                let pxs = ctx1.getImageData(eva.offsetX-w/2, eva.offsetY-w/2, w, w);
+                ctx2.putImageData(pxs, eva.offsetX-w/2, eva.offsetY-w/2);
+            } else{
+                var eva = eva||window.event;
+                var x = eva.offsetX;
+                var y = eva.offsetY;
+                ctx2.lineTo(x,y);
+                ctx2.stroke();
+            }
+        }
+    }
+    // onmouseup事件
+    canvas2.onmouseup = function(){
+        flag = false;
+        ctx2.closePath();
+    }
+    // onmouseleave事件
+    canvas2.onmouseleave = function(){
+        flag = false;
+        ctx2.closePath();
+    }
+
+//     reSetCanvas.onclick = function(){
+//     ctx2.clearRect(0,0,canvas2.width,canvas2.height);
+//     setCanvasBg('white');
+//     canvasHistory = [];
+//     undo.classList.remove('active');
+//     redo.classList.remove('active');
+// }
+    // --------- 画笔和橡皮擦功能实现 -------------
+ 
+    // // 保存画布
+    // function downloadImg() {
+    //     var canvas = document.getElementById('canvas1');
+    //     var alink = document.createElement("a");
+    //     var imgSrc = canvas.toDataURL("image/png");
+    //     alink.href = imgSrc;
+    //     alink.download = Date.now() + ".png";
+    //     alink.click();
+    // }
+</script>
+
+<script>
+ 
+    // 保存画布
+    function downloadImg() {
+        
+        // var canvas1 = document.getElementById('canvas1');
+        // var ctx1 = canvas1.getContext("2d");
+        // var image = new Image();
+        //    image.src = "./image/boy.png";
+           
+        //    image.onload = function(){
+        //       ctx1.drawImage(image, 0, 0);
+        //    }
+        // var alink = document.createElement("a");
+        // var imgSrc = canvas1.toDataURL("image/png");
+        // alink.href = imgSrc;
+        // alink.download = "./boy_draw.png";
+        // alink.click();
+
+        var canvas2 = document.getElementById('canvas2');
+        var alink = document.createElement("a");
+        var imgSrc = canvas2.toDataURL("image/png");
+        alink.href = imgSrc;
+        alink.download = "texture.png";
+        alink.click();
+    }
+</script>
+</html>

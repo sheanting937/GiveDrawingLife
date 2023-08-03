@@ -1,0 +1,27 @@
+<!-- learn from https://www.misterma.com/archives/918/ -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>照片涂鸦</title>
+  <link rel="stylesheet" href="Astyle.css" type="text/css">
+</head>
+<body>
+<div role="toolbar" id="toolbar">
+  <input type="file" id="file-input">
+  <button type="button" id="open-img-file">打开图片</button>
+  <label for="color-select">画笔颜色</label>
+  <input type="color" id="color-select">
+  <label for="thickness">笔画粗细</label>
+  <input type="number" id="thickness" placeholder="笔画的粗细单位为像素" value="5">
+  <button type="button" id="export-btn">导出图片</button>
+  <a href=Aanimation_boy.html class="button">Animation</a>
+</div>
+<hr>
+<canvas id="canvas" width="700" height="1700">不支持</canvas>
+<script type="text/javascript" src="Aapp_boy.js"></script>
+</body>
+</html>

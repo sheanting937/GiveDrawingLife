@@ -1,0 +1,8 @@
+scene:
+  ANIMATED_CHARACTERS:
+    - character_cfg: examples/characters/char_boy/char_cfg.yaml
+      motion_cfg: examples/config/motion/jumping_jacks.yaml
+      retarget_cfg: examples/config/retarget/try_cmu1_pfp.yaml
+controller:
+  MODE: video_render
+  OUTPUT_VIDEO_PATH: ./Agif_boy.gif
