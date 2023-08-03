@@ -18,7 +18,7 @@ Open "./Astart.html" with Microsoft Edge to enjoy the process of giving your dra
 
 ## Introduction Video
 
-[https://1drv.ms/v/s!AlMjzlynx3rVgVKykcYPGSqC8Nbh?e=QbEhoh](https://1drv.ms/v/s!AlMjzlynx3rVgVIRqA9R37cOTbJC?e=bAwW69)
+https://1drv.ms/v/s!AlMjzlynx3rVgVMjrHT-9lP8lZlK?e=FKNk37
 
 ## The following is the original "README.md" of project "Animated Drawings" 
 ( https://github.com/facebookresearch/AnimatedDrawings)
