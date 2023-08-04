@@ -1,9 +1,15 @@
 # Give Drawing Life
+
 ## First Step
+
 Install Git.
+
 Install Miniconda or Anaconda. Remember to add conda to PATH in your computer so that conda and python can work in cmd.
+
 Make sure that the default path of the local "Download" package in your computer is "C:/Users/username/Download".
+
 When you open cmd, make sure that the default path that appears on the page is "C:/Users/username>".
+
 Then run the following commands in cmd:
 ````bash
     # create and activate the virtual environment
