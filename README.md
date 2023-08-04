@@ -23,7 +23,7 @@ Then run the following commands in cmd:
 ````
 ## Second Step
 
-Open "./Astart.html" with Microsoft Edge to enjoy the process of giving your drawing life!
+Open "C:/Users/username/GiveDrawingLife/Astart.html" with Microsoft Edge to enjoy the process of giving your drawing life!
 
 ## Introduction Video
 
