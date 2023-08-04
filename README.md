@@ -1,7 +1,10 @@
 # Give Drawing Life
 ## First Step
-Use Conda's Miniconda to activate a Python virtual environment prior to installing Give Drawing Life. Follow [these steps](https://conda.io/projects/conda/en/stable/user-guide/install/index.html) to download and install it. Then run the following commands:
-
+Install Git.
+Install Miniconda or Anaconda. Remember to add conda to PATH in your computer so that conda and python can work in cmd.
+Make sure that the default path of the local "Download" package in your computer is "C:/Users/username/Download".
+When you open cmd, make sure that the default path that appears on the page is "C:/Users/username>".
+Then run the following commands in cmd:
 ````bash
     # create and activate the virtual environment
     conda create --name animated_drawings python=3.8.13
