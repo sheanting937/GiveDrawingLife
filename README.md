@@ -1,5 +1,7 @@
 # Give Drawing Life
 
+You only need to do First Step once. Then every time you want to play this project, you can just jump to Second Step.
+
 ## First Step
 
 Install Git.
