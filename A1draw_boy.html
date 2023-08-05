@@ -139,33 +139,31 @@
     var canvas2 = document.getElementById("canvas2");
     var ctx2 = canvas2.getContext("2d");
     var ctx1 = canvas1.getContext("2d");
-    // --------- 画笔和橡皮擦功能实现 -------------
-    var flag = false;  // 记录鼠标按下和抬起事件，标记工具是否开始工作
-    var isEraser; // 判断工具是画笔还是橡皮擦
-    // var lineWidth = 3; // 设置工具粗细
-    var colorSelect = document.querySelector('#color-select');  // 颜色选择器
-    var thickness = document.querySelector('#thickness');  // 笔画粗细的输入表单
+    var flag = false;
+    var isEraser;
+    // var lineWidth = 3;
+    var colorSelect = document.querySelector('#color-select');
+    var thickness = document.querySelector('#thickness');
     // var undo = document.getElementById("undo");
     // var redo = document.getElementById("redo");
     // var reSetCanvas = document.getElementById("clear");
-    // 设置画笔颜色
     // var theColor = "#000000";
     // theColor.onchange = function(){
     //     ctx2.strokeStyle = this.value;
     // }
-    // 切换工具
+	
     function changeTools(tname) {
         if (tname == 'eraser') {
             isEraser = true;
             lineWidth = 30;
-            $(canvas2).css({ 'cursor': "url('./image/eraser.png'),default" }); // 设置橡皮擦自定义鼠标样式
+            $(canvas2).css({ 'cursor': "url('./image/eraser.png'),default" });
         } else if (tname == 'pen') {
             isEraser = false;
             lineWidth = 3;
-            $(canvas2).css({ 'cursor': 'crosshair' }); // 设置画笔系统鼠标样式(十字)
+            $(canvas2).css({ 'cursor': 'crosshair' });
         }
     }
-    // onmousedown事件
+    // onmousedown
     canvas2.onmousedown=function(eva){
         var eva = eva||window.event;
         ctx2.lineCap = "round";
@@ -178,7 +176,7 @@
         ctx2.lineWidth = Number(thickness.value);
         ctx2.strokeStyle = colorSelect.value;
     }
-    // onmousemove事件
+    // onmousemove
     canvas2.onmousemove=function(eva){
         if(flag){
             if(isEraser){
@@ -195,12 +193,12 @@
             }
         }
     }
-    // onmouseup事件
+    // onmouseup
     canvas2.onmouseup = function(){
         flag = false;
         ctx2.closePath();
     }
-    // onmouseleave事件
+    // onmouseleave
     canvas2.onmouseleave = function(){
         flag = false;
         ctx2.closePath();
@@ -213,9 +211,7 @@
 //     undo.classList.remove('active');
 //     redo.classList.remove('active');
 // }
-    // --------- 画笔和橡皮擦功能实现 -------------
  
-    // // 保存画布
     // function downloadImg() {
     //     var canvas = document.getElementById('canvas1');
     //     var alink = document.createElement("a");
@@ -228,7 +224,6 @@
 
 <script>
  
-    // 保存画布
     function downloadImg() {
         
         // var canvas1 = document.getElementById('canvas1');
